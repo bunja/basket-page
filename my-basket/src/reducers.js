@@ -94,7 +94,37 @@ export default function reducer(state = {}, action) {
 
     if (action.type == "DOWN_ITEM") {
         console.log("DOWN ITEM", action);
-        
+        const newItems = state.basket.items.map(item => {
+            if(item.id != action.id){
+                return item;
+            }
+            if(item.qty <= 1){
+                return item;
+            }
+            const qty = item.qty - 1;
+            const cost = item.price * qty;
+            return {
+                ...item,
+                qty: qty,
+                cost: cost 
+            }
+
+        });
+        const costsArr = newItems.map(item =>item.cost);
+        const newSubtotal = sum(costsArr);
+        const newVat = 0.2*newSubtotal; 
+        const newTotal = newSubtotal + newVat; 
+        newState = {
+            ...state,
+            basket: {
+                ...state.basket,
+                items: newItems,
+                subtotal: newSubtotal,
+                vat: newVat,
+                total: newTotal
+            },
+            
+        };
         
     }
 
