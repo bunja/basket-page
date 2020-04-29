@@ -35,9 +35,22 @@ export function receiveBasketInfo() {
 }  
 
 export  function removeItem(id) {
-    
     return {
         type: "REMOVE_ITEM",
+        id
+    };
+}
+
+export  function upItem(id) {
+    return {
+        type: "UP_ITEM",
+        id
+    };
+}
+
+export  function downItem(id) {
+    return {
+        type: "DOWN_ITEM",
         id
     };
 }

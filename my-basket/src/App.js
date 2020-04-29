@@ -5,7 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 import {
   receiveBasketInfo,
-  removeItem
+  removeItem,
+  upItem,
+  downItem
 } from "./actions";
 
 function App() {
@@ -53,7 +55,14 @@ function App() {
                         <tr key={item.id} className="item-row">
                             <td>{item.product}</td>
                             <td>{item.price}</td>
-                            <td>{item.qty}</td>
+                            <td>{item.qty}
+                                <div onClick={() => {
+                                  dispatch(upItem(item.id));
+                                }}>🔼</div>
+                                <div onClick={() => {
+                                  dispatch(downItem(item.id));
+                                }}>🔽</div>
+                            </td>
                             <td>{item.cost}</td>
                             <td><span onClick={() => {
                               dispatch(removeItem(item.id));
