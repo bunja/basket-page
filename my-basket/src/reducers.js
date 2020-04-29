@@ -1,3 +1,12 @@
+const sum = (arr) => {
+    let sum = 0;
+    for(let i = 0; i < arr.length; i++){
+        sum = sum + arr[i];
+    }
+    return sum;
+}
+
+
 export default function reducer(state = {}, action) {
     // if (action.type == "ACTION_TYPE") {
     //     state = { ...state }; //clonning your state
@@ -24,6 +33,26 @@ export default function reducer(state = {}, action) {
                         basket: action.basket 
                         
                     };
+    }
+
+    if (action.type == "REMOVE_ITEM") {
+        console.log("REMOVE ITEM", action);
+        const newItems = state.basket.items.filter(item => item.id != action.id);
+        const costsArr = newItems.map(item =>item.cost);
+        const newSubtotal = sum(costsArr);
+        const newVat = 0.2*newSubtotal; 
+        const newTotal = newSubtotal + newVat; 
+        newState = {
+            ...state,
+            basket: {
+                ...state.basket,
+                items: newItems,
+                subtotal: newSubtotal,
+                vat: newVat,
+                total: newTotal
+            },
+            
+        };
     }
 
     console.log("New State", newState);

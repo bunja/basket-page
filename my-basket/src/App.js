@@ -4,12 +4,13 @@ import './App.css';
 import { useDispatch, useSelector } from "react-redux";
 
 import {
-  receiveBasketInfo
+  receiveBasketInfo,
+  removeItem
 } from "./actions";
 
 function App() {
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(receiveBasketInfo());
   }, []);
@@ -26,7 +27,9 @@ function App() {
   const subtotal = basket.subtotal;
   const total = basket.total;
 
-  
+  // const removeItem = (itemId) => {
+  //   console.log("itemId", itemId);
+  // };
   
 
   return (
@@ -52,7 +55,9 @@ function App() {
                             <td>{item.price}</td>
                             <td>{item.qty}</td>
                             <td>{item.cost}</td>
-                            <td>button</td>
+                            <td><span onClick={() => {
+                              dispatch(removeItem(item.id));
+                            }}>🗑️</span></td>
                         </tr>
                     );
                 })}

@@ -1,4 +1,4 @@
-export async function receiveBasketInfo() {
+export function receiveBasketInfo() {
     console.log("hoho action is in action");
     return {
         type: "RECEIVE_BASKET_INFO",
@@ -32,4 +32,12 @@ export async function receiveBasketInfo() {
             total: 14.35
         }
     };
-}   
+}  
+
+export  function removeItem(id) {
+    
+    return {
+        type: "REMOVE_ITEM",
+        id
+    };
+}
