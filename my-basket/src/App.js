@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import logo from './logo.svg';
-import './App.css';
+
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -35,15 +34,15 @@ function App() {
 
 
     return (
-        <div className="App">
-            <div class="container">
-                <h1>AKQA</h1>
-                <h2>Your Basket</h2>
+        <div className="app">
+            <div className="container">
+                <div className="name">AKQA</div>
+                <div className="your-basket">Your Basket</div>
                 <p>Items you have added to your basket are shown below.</p>
                 <p>Adjust the quantities or remove items before counting your purchase</p>
 
                 <table>
-                    <tr class="header">
+                    <tr className="header">
                         <th>Product</th>
                         <th>Price</th>
                         <th>Qty</th>
@@ -54,16 +53,20 @@ function App() {
 
                             <tr key={item.id} className="item-row">
                                 <td>{item.product}</td>
-                                <td>{item.price}</td>
-                                <td>{item.qty}
-                                    <div onClick={() => {
-                                        dispatch(upItem(item.id));
-                                    }}>🔼</div>
-                                    <div onClick={() => {
-                                        dispatch(downItem(item.id));
-                                    }}>🔽</div>
+                                <td>${item.price}</td>
+                                <td className="qty"> 
+                                    <div className="item-qty">{item.qty}</div>
+                                    <div className="arrow">
+                                        <div  onClick={() => {
+                                            dispatch(upItem(item.id));
+                                        }}><div className="arrow-up"></div></div>
+                                        <div  onClick={() => {
+                                            dispatch(downItem(item.id));
+                                        }}><div className="arrow-down"></div></div>
+                                    </div>
+                                    
                                 </td>
-                                <td>{item.cost}</td>
+                                <td>${item.cost}</td>
                                 <td><span onClick={() => {
                                     dispatch(removeItem(item.id));
                                 }}>🗑️</span></td>
@@ -71,21 +74,21 @@ function App() {
                         );
                     })}
 
-                    <tr>
-                        <td colspan="3">Subtotal</td>
-                        <td>{subtotal}</td>
+                    <tr className="subtotal">
+                        <td  colspan="3">Subtotal</td>
+                        <td>${subtotal}</td>
                     </tr>
                     <tr>
                         <td colspan="3">VAT @ 20%</td>
-                        <td>{vat}</td>
+                        <td>${vat}</td>
                     </tr>
                     <tr></tr>
                     <tr>
                         <td colspan="3">Total Cost</td>
-                        <td>{total}</td>
+                        <td>${total}</td>
                     </tr>
                 </table>
-                <button onClick={() => {
+                <button className="myButton" onClick={() => {
                     console.log("basket", basket)
                 }}>Buy Now</button>
             </div>

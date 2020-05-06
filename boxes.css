@@ -1,0 +1,31 @@
+.boxes {
+    width: 220px;
+    height: 150px;
+  }
+
+.first {
+    background-color: aqua;
+    position: relative;
+    top: 70px;
+    left: 20px;
+    z-index: 20;
+}
+
+.second {
+    background-color: blueviolet;
+    position: relative;
+    top: 20px;
+    left: 10px;
+    z-index: 1;
+}
+
+.outer {
+    width: 260px;
+    height: 190px;
+    background-color: brown;
+    position: relative;
+    z-index: 3000;
+    top: 80px;
+    left: 10px;
+    /* opacity: 0.5; */
+}
