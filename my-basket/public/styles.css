@@ -47,10 +47,7 @@ th {
 }
 
 th, td, tr {
-    padding: 0.2em;
-    
-    /* text-align: justify; */
-    /* border: 1px solid black; */
+    padding: 0.5em 0.2em;
 }
 
 th, td {
@@ -99,18 +96,21 @@ th, td {
   }
 
   .myButton {
-	background-color:#7892c2;
-	border-radius:10px;
+	background-color:#14306B;
+	border-radius:8px;
 	border:1px solid #4e6096;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:17px;
+	font-size:1em;
 	font-weight:bold;
-	padding:16px 31px;
+	padding:8px 4px;
 	text-decoration:none;
-	text-shadow:0px 1px 0px #283966;
+    text-shadow:0px 1px 0px #283966;
+    position: relative;
+    left: 364px;
+    top: 60px;
 }
 .myButton:hover {
 	background-color:#476e9e;

@@ -90,7 +90,7 @@ function App() {
                 </table>
                 <button className="myButton" onClick={() => {
                     console.log("basket", basket)
-                }}>Buy Now</button>
+                }}>Buy Now»</button>
             </div>
         </div>
     );
